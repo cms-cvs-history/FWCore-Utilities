@@ -1,0 +1,6 @@
+<environment>
+  <use name=boost>
+
+  <bin file=Exception_t.cpp>  </bin>
+
+</environment>
