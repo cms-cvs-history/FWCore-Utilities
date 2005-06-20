@@ -1,5 +1,5 @@
 
-#include "FWCore/FWUtilities/interface/Exception.h"
+#include "FWCore/FWUtilities/interface/CodedException.h"
 
 #include <iostream>
 #include <string>
@@ -7,6 +7,29 @@
 
 using namespace cms;
 using namespace std;
+
+
+namespace edmtest
+{
+
+  // This is the list of error codes we shall use.
+  enum ToyErrorCodes
+    {
+      Bad=3,
+      Worse,
+      Horrific
+    };
+
+
+  // What is the Codes<T> type? Can we find a better name?
+  // Maybe CodeTranslator<T> or CodeMapper<T>?
+  typedef edm::Codes<edmtest::ToyErrorCodes> ToyErrorCodeTranslator;
+
+  // This is the kind of exception we shall throw.
+  // I was confused at first, and thought we were supposed to use
+  //     edm::CodedException<ToyErrorCodes>
+  typedef edm::CodedException<ToyErrorCodeTranslator> ToyException;
+}
 
 struct Thing
 {
@@ -31,7 +54,7 @@ void func3()
   char c2[] = "a c-style array";
   Thing thing(4);
 
-  throw Exception("DataCorrupt") 
+  throw edmtest::ToyException(edmtest::Horrific)
     << "This is just a test: \n"
     << "double: " << d << "\n"
     << "float:  " << f << "\n"

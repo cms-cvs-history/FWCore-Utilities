@@ -1,6 +1,10 @@
 <environment>
   <use name=boost>
+  <use name=FWCore/FWUtilities>
 
   <bin file=Exception_t.cpp>  </bin>
+  <bin file=CodedException_t.cpp>  </bin>
 
 </environment>
+
+
