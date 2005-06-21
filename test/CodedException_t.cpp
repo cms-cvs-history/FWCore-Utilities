@@ -5,7 +5,7 @@
 #include <string>
 #include <iomanip>
 
-using namespace cms;
+//using namespace cms;
 using namespace std;
 
 
@@ -21,14 +21,22 @@ namespace edmtest
     };
 
 
-  // What is the Codes<T> type? Can we find a better name?
-  // Maybe CodeTranslator<T> or CodeMapper<T>?
-  typedef edm::Codes<edmtest::ToyErrorCodes> ToyErrorCodeTranslator;
-
   // This is the kind of exception we shall throw.
   // I was confused at first, and thought we were supposed to use
   //     edm::CodedException<ToyErrorCodes>
-  typedef edm::CodedException<ToyErrorCodeTranslator> ToyException;
+  typedef edm::CodedException<ToyErrorCodes> ToyException;
+
+}
+
+// we must write this specialization.  it is somewhat awkward
+// because of the edm namespace
+namespace edm {
+  template <> void edmtest::ToyException::loadTable()
+  {
+    EDM_MAP_ENTRY(edmtest,Bad);
+    EDM_MAP_ENTRY(edmtest,Worse);
+    EDM_MAP_ENTRY(edmtest,Horrific);
+  }
 }
 
 struct Thing
@@ -85,17 +93,17 @@ void func1()
     {
       func2();
     }
-  catch (Exception& e)
+  catch (cms::Exception& e)
     {
-      throw Exception("InfiniteLoop","In func2",e) << "Gave up";
+      throw cms::Exception("Worse","In func2",e) << "Gave up";
     }
   
 }
 
 const char answer[] = 
-  "---- InfiniteLoop BEGIN\n"
+  "---- Worse BEGIN\n"
   "In func2\n"
-  "---- DataCorrupt BEGIN\n"
+  "---- Horrific BEGIN\n"
   "This is just a test: \n" 
   "double: 1.11111\n"
   "float:  2.22222\n"
@@ -112,12 +120,12 @@ const char answer[] =
   "char*:  ..a nonconst pointer\n"
   "char[]: a c-style array\n"
   "Thing:  Thing(4)\n"
-  "---- DataCorrupt END\n"
+  "---- Horrific END\n"
   "Gave up\n"
-  "---- InfiniteLoop END\n"
+  "---- Worse END\n"
   ;
 
-const char* correct[] = { "InfiniteLoop","DataCorrupt" };
+const char* correct[] = { "Worse","Horrific" };
 
 int main()
 {
@@ -125,7 +133,7 @@ int main()
     {
       func1();
     }
-  catch (Exception& e)
+  catch (cms::Exception& e)
     {
       cerr << "*** main caught Exception, output is ***\n"
 	   << "(" << e.what() << ")"
@@ -143,7 +151,7 @@ int main()
 	}
 #endif
 
-      Exception::CategoryList::const_iterator i(e.history().begin()),
+      cms::Exception::CategoryList::const_iterator i(e.history().begin()),
 	b(e.history().end());
 
       if(e.history().size() !=2) abort();

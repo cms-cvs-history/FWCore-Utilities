@@ -4,6 +4,7 @@
 
   <bin file=Exception_t.cpp>  </bin>
   <bin file=CodedException_t.cpp>  </bin>
+  <bin file=ExceptionDerived_t.cpp>  </bin>
 
 </environment>
 
