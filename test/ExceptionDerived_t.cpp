@@ -21,9 +21,7 @@ ostream& operator<<(ostream& os, const Thing& t)
 
 void func3()
 {
-  throw Thing("Data Corrupt") 
-    << " Low level error"
-    << endl;
+  throw Thing("Data Corrupt") << " Low level error" << endl;
 }
 
 void func2()

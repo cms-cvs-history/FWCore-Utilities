@@ -8,7 +8,6 @@
 //using namespace cms;
 using namespace std;
 
-
 namespace edmtest
 {
 
@@ -50,6 +49,11 @@ ostream& operator<<(ostream& os, const Thing& t)
 {
   os << "Thing(" << t.x << ")";
   return os;
+}
+
+void simple()
+{
+  edmtest::ToyException h(edmtest::Horrific);
 }
 
 void func3()
@@ -142,14 +146,12 @@ int main()
 
       cerr << "\nCategory name list:\n";
 
-#if 1
       if(e.what() != answer)
 	{
 	  cerr << "not right answer\n(" << answer << ")\n"
 	       << endl;
 	  abort();
 	}
-#endif
 
       cms::Exception::CategoryList::const_iterator i(e.history().begin()),
 	b(e.history().end());
@@ -163,5 +165,5 @@ int main()
 	    { cerr << "bad category " << *i << endl; abort(); }
 	}
     }
-  return 0; 
+  return 0;
 }
