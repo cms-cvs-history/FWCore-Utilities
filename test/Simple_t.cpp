@@ -21,7 +21,7 @@ int main()
     "---- BadJuju END\n";
 
   std::string result(e.what());
-  assert ( result == expected );
+  assert (result == expected);
 
   // Check to see that the following items compile; their modification
   // of the output is tested elsewhere.
