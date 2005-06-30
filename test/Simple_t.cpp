@@ -32,4 +32,8 @@ int main()
   std::string res2("---- RealBadStuff BEGIN\nA B\n---- RealBadStuff END\n");
   assert(e2.what()==res2);
   
+  cms::Exception e3("RealBadStuff","A "); e3 << "B";
+  std::string res3("---- RealBadStuff BEGIN\nA B\n---- RealBadStuff END\n");
+  assert(e3.what()==res3);
+  
 }
