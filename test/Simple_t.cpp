@@ -27,4 +27,9 @@ int main()
   // of the output is tested elsewhere.
   e << std::setprecision(3);
   e << std::scientific;      
+
+  cms::Exception e2("RealBadStuff","A"); e2 << "B";
+  std::string res2("---- RealBadStuff BEGIN\nA B\n---- RealBadStuff END\n");
+  assert(e2.what()==res2);
+  
 }
