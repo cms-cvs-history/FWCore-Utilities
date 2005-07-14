@@ -1,6 +1,6 @@
 <environment>
   <use name=boost>
-  <use name=FWCore/FWUtilities>
+  <use name=FWCore/Utilities>
 
    <bin file=Simple_t.cpp> </bin>
    <bin file=Exception_t.cpp>  </bin>

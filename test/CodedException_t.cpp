@@ -1,5 +1,5 @@
 
-#include "FWCore/FWUtilities/interface/CodedException.h"
+#include "FWCore/Utilities/interface/CodedException.h"
 
 #include <iostream>
 #include <string>
