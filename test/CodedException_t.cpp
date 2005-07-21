@@ -29,13 +29,27 @@ namespace edmtest
 
 // we must write this specialization.  it is somewhat awkward
 // because of the edm namespace
-namespace edm {
-  template <> void edmtest::ToyException::loadTable()
+namespace {
+  struct FilledMap
   {
-    EDM_MAP_ENTRY(edmtest,Bad);
-    EDM_MAP_ENTRY(edmtest,Worse);
-    EDM_MAP_ENTRY(edmtest,Horrific);
-  }
+    FilledMap()
+    {
+      cerr << "my loadmap got called" << endl;
+      EDM_MAP_ENTRY(trans_,edmtest,Bad);
+      EDM_MAP_ENTRY(trans_,edmtest,Worse);
+      EDM_MAP_ENTRY(trans_,edmtest,Horrific);
+    }
+
+    edmtest::ToyException::CodeMap trans_;
+  };
+}
+
+namespace edm {
+void getCodeTable(edmtest::ToyException::CodeMap*& setme)
+{
+  static FilledMap fm;
+  setme = &fm.trans_;
+}
 }
 
 struct Thing
