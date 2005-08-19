@@ -7,7 +7,6 @@
   <bin file=ExceptionDerived_t.cpp>  </bin>
   <bin file=CodedException_t.cpp>  </bin>
   <bin file=EDMException_t.cpp>  </bin>
-  <bin file=Digest_t.cpp> </bin>
 </environment>
 
 
