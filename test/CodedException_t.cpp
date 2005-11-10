@@ -2,6 +2,7 @@
 #include "FWCore/Utilities/interface/CodedException.h"
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <iomanip>
 
@@ -16,7 +17,8 @@ namespace edmtest
     {
       Bad=3,
       Worse,
-      Horrific
+      Horrific,
+      Amusing
     };
 
 
@@ -38,6 +40,7 @@ namespace {
       EDM_MAP_ENTRY(trans_,edmtest,Bad);
       EDM_MAP_ENTRY(trans_,edmtest,Worse);
       EDM_MAP_ENTRY(trans_,edmtest,Horrific);
+      EDM_MAP_ENTRY(trans_,edmtest,Amusing);
     }
 
     edmtest::ToyException::CodeMap trans_;
@@ -147,6 +150,17 @@ const char* correct[] = { "Worse","Horrific" };
 
 int main()
 {
+  edmtest::ToyException e(edmtest::Amusing, "Rats! Foiled again!\n");
+  std::ostringstream oss;
+  oss << e;
+  std::string s = oss.str();
+
+  std::string expected("---- Amusing BEGIN\n"
+		       "Rats! Foiled again!\n" 
+		       "---- Amusing END\n");
+
+  std::cerr << "ToyException message is:\n" << s << std::endl;
+  assert ( s == expected );
   try
     {
       func1();
