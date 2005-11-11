@@ -8,5 +8,9 @@
   <bin file=CodedException_t.cpp>  </bin>
   <bin file=EDMException_t.cpp>  </bin>
 </environment>
+<use name=cppunit>
+<bin name=testFWCoreUtilities file=testRunner.cc,typeidbase_t.cppunit.cc>
+  <use name=cppunit>
+</bin>
 
 
