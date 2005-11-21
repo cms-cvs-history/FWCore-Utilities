@@ -1,15 +1,21 @@
 <environment>
   <use name=boost>
   <use name=FWCore/Utilities>
+  <bin file=Simple_t.cpp></bin>
+  <bin file=Exception_t.cpp></bin>
+  <bin file=ExceptionDerived_t.cpp></bin>
+  <bin file=CodedException_t.cpp></bin>
+  <bin file=EDMException_t.cpp></bin>
+  <bin file=TestHelper_t.cpp> 
+     <flags TEST_RUNNER_ARGS=" /bin/bash FWCore/Utilities/test one.sh two.sh">
+  </bin>
 
-   <bin file=Simple_t.cpp> </bin>
-   <bin file=Exception_t.cpp>  </bin>
-  <bin file=ExceptionDerived_t.cpp>  </bin>
-  <bin file=CodedException_t.cpp>  </bin>
-  <bin file=EDMException_t.cpp>  </bin>
 </environment>
+
 <use name=cppunit>
-<bin name=testFWCoreUtilities file=testRunner.cc,typeidbase_t.cppunit.cc>
+
+<bin name=testFWCoreUtilities 
+  file=testRunner.cc,typeidbase_t.cppunit.cc>
   <use name=cppunit>
 </bin>
 
