@@ -15,7 +15,7 @@
 <use name=cppunit>
 
 <bin name=testFWCoreUtilities 
-  file=testRunner.cc,typeidbase_t.cppunit.cc>
+  file=typeidbase_t.cppunit.cpp>
   <use name=cppunit>
 </bin>
 

@@ -3,7 +3,7 @@
 Test program for edm::TypeIDBase class.
 Changed by Viji on 29-06-2005
 
-$Id: typeid_t.cppunit.cc,v 1.2 2005/07/14 22:50:53 wmtan Exp $
+$Id: typeidbase_t.cppunit.cc,v 1.1 2005/11/11 18:59:24 chrjones Exp $
  ----------------------------------------------------------------------*/
 
 #include <cassert>
@@ -67,3 +67,4 @@ void testTypeIDBase::copyTest()
   std::string n3(id3.name());
   CPPUNIT_ASSERT(n1== n3);
 }
+#include <Utilities/Testing/interface/CppUnit_testdriver.icpp>
