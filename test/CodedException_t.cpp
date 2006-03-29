@@ -161,37 +161,33 @@ int main()
 
   std::cerr << "ToyException message is:\n" << s << std::endl;
   assert ( s == expected );
-  try
-    {
-      func1();
-    }
-  catch (cms::Exception& e)
-    {
-      cerr << "*** main caught Exception, output is ***\n"
-	   << "(" << e.what() << ")"
-	   << "*** After exception output ***"
+  try {
+    func1();
+  }
+  catch (cms::Exception& e) {
+    cerr << "*** main caught Exception, output is ***\n"
+	 << "(" << e.explainSelf() << ")"
+	 << "*** After exception output ***"
+	 << endl;
+
+    cerr << "\nCategory name list:\n";
+
+    if(e.explainSelf() != answer) {
+      cerr << "not right answer\n(" << answer << ")\n"
 	   << endl;
+      abort();
+    }
 
-      cerr << "\nCategory name list:\n";
-
-      if(e.what() != answer)
-	{
-	  cerr << "not right answer\n(" << answer << ")\n"
-	       << endl;
-	  abort();
-	}
-
-      cms::Exception::CategoryList::const_iterator i(e.history().begin()),
+    cms::Exception::CategoryList::const_iterator i(e.history().begin()),
 	b(e.history().end());
 
-      if(e.history().size() !=2) abort();
+    if(e.history().size() !=2) abort();
 
-      for(int j=0;i!=b;++i,++j)
-	{
-	  cout << "  " << *i << "\n";
-	  if(*i != correct[j])
-	    { cerr << "bad category " << *i << endl; abort(); }
-	}
+    for(int j=0; i != b; ++i, ++j) {
+      cout << "  " << *i << "\n";
+      if(*i != correct[j])
+	{ cerr << "bad category " << *i << endl; abort(); }
     }
+  }
   return 0;
 }

@@ -15,7 +15,7 @@ struct Thing : public Exception
 
 ostream& operator<<(ostream& os, const Thing& t)
 {
-  os << "Thing(" << t.what() << ")";
+  os << "Thing(" << t.explainSelf() << ")";
   return os;
 }
 
@@ -31,41 +31,36 @@ void func2()
 
 void func1()
 {
-  try 
-    {
+  try {
       func2();
-    }
-  catch (Exception& e)
-    {
+  }
+  catch (Exception& e) {
       throw Exception("InfiniteLoop","In func2",e) << "Gave up";
-    }
+  }
   
 }
 
 int main()
 {
-  try
-    {
-      func1();
-    }
-  catch (Exception& e)
-    {
-      cerr << "*** main caught Exception, output is ***\n"
-	   << "(" << e.what() << ")"
-	   << "*** After exception output ***"
-	   << endl;
+  try {
+    func1();
+  }
+  catch (Exception& e) {
+    cerr << "*** main caught Exception, output is ***\n"
+	 << "(" << e.explainSelf() << ")"
+	 << "*** After exception output ***"
+	 << endl;
 
-      cerr << "\nCategory name list:\n";
+    cerr << "\nCategory name list:\n";
 
 #if 0
-      if(e.what() != answer)
-	{
-	  cerr << "not right answer\n(" << answer << ")\n"
-	       << endl;
-	  abort();
-	}
+    if(e.explainSelf() != answer) {
+      cerr << "not right answer\n(" << answer << ")\n"
+	   << endl;
+      abort();
+    }
 #endif
 
-    }
+  }
   return 0; 
 }

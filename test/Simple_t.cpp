@@ -20,7 +20,7 @@ int main()
     "arghargharghargharghargh 3 1.5\n boo blue blue\n"
     "---- BadJuju END\n";
 
-  std::string result(e.what());
+  std::string result(e.explainSelf());
   assert (result == expected);
 
   // Check to see that the following items compile; their modification
@@ -30,10 +30,10 @@ int main()
 
   cms::Exception e2("RealBadStuff","A"); e2 << "B";
   std::string res2("---- RealBadStuff BEGIN\nA B\n---- RealBadStuff END\n");
-  assert(e2.what()==res2);
+  assert(e2.explainSelf() == res2);
   
   cms::Exception e3("RealBadStuff","A "); e3 << "B";
   std::string res3("---- RealBadStuff BEGIN\nA B\n---- RealBadStuff END\n");
-  assert(e3.what()==res3);
+  assert(e3.explainSelf() == res3);
   
 }
