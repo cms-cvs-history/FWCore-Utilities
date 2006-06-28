@@ -2,7 +2,7 @@
 #define Utilities_PersistentNames_h
 //////////////////////////////////////////////////////////////////////
 //
-// $Id: PersistentNames.h,v 1.1 2006/06/28 16:15:09 wmtan Exp $
+// $Id: PersistentNames.h,v 1.1.2.2 2006/06/28 16:38:52 wmtan Exp $
 //
 // Functions defining tree, branch, and container names.
 // Namespace rootNames. Defined names of ROOT trees and branches
@@ -20,25 +20,33 @@ namespace edm {
       return tree + "(" + branch + ")";
     }
 
+    // Event Tree (1 entry per event)
+    // One branch per EDProduct
     inline
     std::string
     eventTreeName() { return "Events"; }
 
-    inline
-    std::string
-    provenanceBranchName() { return "Provenance"; }
-
+    // Extra Branch on Event Tree
     inline
     std::string auxiliaryBranchName() { return "EventAux"; }
 
+    // Event MetaData Tree (1 entry per event)
+    // One branch per EDProduct
+    inline
+    std::string
+    eventMetaDataTreeName() { return "EventMetaData"; }
+
+    // MetaData Tree (1 entry per file)
     inline
     std::string
     metaDataTreeName() { return "MetaData"; }
 
+    // Branch on MetaData Tree
     inline
     std::string
     productDescriptionBranchName() { return "ProductRegistry"; }
 
+// Obsolete.  Kept for backward compatibility and conversion
     inline
     std::string
     parameterSetTreeName() { return "ParameterSets"; }
@@ -50,6 +58,10 @@ namespace edm {
     inline
     std::string
     parameterSetBranchName() { return "ParameterSet"; }
+
+    inline
+    std::string
+    provenanceBranchName() { return "Provenance"; }
 
   }
 }
