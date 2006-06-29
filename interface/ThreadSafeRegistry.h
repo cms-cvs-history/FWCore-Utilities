@@ -5,7 +5,7 @@
 #include "boost/thread.hpp"
 
 // ----------------------------------------------------------------------
-// $Id:$
+// $Id: ThreadSafeRegistry.h,v 1.1.2.1 2006/06/29 19:00:21 paterno Exp $
 
 /// A ThreadSafeRegistry is used to keep track of the instances of
 /// some type 'mapped_typed'.  These objects are each associated with
@@ -69,6 +69,10 @@ namespace edm
 
       /// Print the contents of this registry to the given ostream.
       void print(std::ostream& os) const;
+
+      /// Provide access to the contained collection
+      collection_type& data();
+      collection_type const& data() const;
 
     private:
       ThreadSafeRegistry();
@@ -190,6 +194,19 @@ namespace edm
 	}
     }
 
+    template <class KEY, class T>
+    typename ThreadSafeRegistry<KEY,T>::collection_type&
+    ThreadSafeRegistry<KEY,T>::data()
+    {
+      return data_;
+    }
+
+    template <class KEY, class T>
+    typename ThreadSafeRegistry<KEY,T>::collection_type const&
+    ThreadSafeRegistry<KEY,T>::data() const
+    {
+      return data_;
+    }
 
     template <class KEY, class T> 
     ThreadSafeRegistry<KEY,T>::ThreadSafeRegistry() : 
