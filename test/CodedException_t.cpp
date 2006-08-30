@@ -34,7 +34,7 @@ namespace edmtest
 namespace {
   struct FilledMap
   {
-    FilledMap()
+    FilledMap() : trans_()
     {
       cerr << "my loadmap got called" << endl;
       EDM_MAP_ENTRY(trans_,edmtest,Bad);
@@ -150,9 +150,9 @@ const char* correct[] = { "Worse","Horrific" };
 
 int main()
 {
-  edmtest::ToyException e(edmtest::Amusing, "Rats! Foiled again!\n");
+  edmtest::ToyException ex(edmtest::Amusing, "Rats! Foiled again!\n");
   std::ostringstream oss;
-  oss << e;
+  oss << ex;
   std::string s = oss.str();
 
   std::string expected("---- Amusing BEGIN\n"
