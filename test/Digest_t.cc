@@ -22,6 +22,21 @@ void testGivenString(std::string const& s)
   assert(r1.compactForm().size() == 16);
 }
 
+void testConversions()
+{
+  string data("aldjfakl\tsdjf34234 \najdf");
+  Digest dig(data);
+  MD5Result r1 = dig.digest();
+  assert(r1.isValid());
+  std::string hexy = r1.toString();
+  assert(hexy.size() == 32);
+  MD5Result r2;
+  r2.fromHexifiedString(hexy);
+  assert(r1 == r2);
+  assert(r1.toString() == r2.toString());
+  assert(r1.compactForm() == r2.compactForm());
+}
+
 
 void testEmptyString()
 {
@@ -57,5 +72,6 @@ int main()
   testGivenString("{ }");
   testGivenString("abc 123 abc");
   testEmptyString();
+  testConversions();
   
 }
