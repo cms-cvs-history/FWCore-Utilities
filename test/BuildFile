@@ -10,7 +10,7 @@
      <flags TEST_RUNNER_ARGS=" /bin/bash FWCore/Utilities/test one.sh two.sh">
   </bin>
   <bin file=value_ptr_t.cpp></bin>
-
+  <bin file=Digest_t.cpp></bin>
 </environment>
 
 <use name=cppunit>
