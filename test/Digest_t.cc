@@ -17,7 +17,7 @@ void testGivenString(std::string const& s)
   assert(r1 == r2);
 
   // The result should be valid *iff* s is non-empty.
-  assert(r1.isValid() != s.empty() );
+  assert(r1.isValid() == !s.empty() );
   assert(r1.toString().size() == 32);
   assert(r1.compactForm().size() == 16);
 }
