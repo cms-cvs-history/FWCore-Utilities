@@ -77,7 +77,7 @@ void func3()
 {
   double d = 1.11111;
   float f = 2.22222;
-  unsigned long l = std::numeric_limits<unsigned long>::max();
+  unsigned int i = std::numeric_limits<unsigned int>::max();
   std::string s("a string");
   char* c1 = const_cast<char *>("a nonconst pointer");
   char c2[] = "a c-style array";
@@ -87,7 +87,7 @@ void func3()
     << "This is just a test: \n"
     << "double: " << d << "\n"
     << "float:  " << f << "\n"
-    << "ulong:  " << l << "\n"
+    << "uint:   " << i << "\n"
     << "string: " << s << "\n"
     << "char*:  " << c1 << "\n"
     << "char[]: " << c2 << "\n"
@@ -95,7 +95,7 @@ void func3()
     << endl
     << "double: " << scientific << d << "\n"
     << "float:  " << setprecision(2) << f << "\n"
-    << "ulong:  " << l << "\n"
+    << "uint:   " << i << "\n"
     << "string: " << s << "\n"
     << "char*:  " << setfill('.') << setw(20) << c1 << "\n"
     << "char[]: " << c2 << "\n"
@@ -128,7 +128,7 @@ const char answer[] =
   "This is just a test: \n" 
   "double: 1.11111\n"
   "float:  2.22222\n"
-  "ulong:  4294967295\n"
+  "uint:   4294967295\n"
   "string: a string\n"
   "char*:  a nonconst pointer\n"
   "char[]: a c-style array\n"
@@ -136,7 +136,7 @@ const char answer[] =
   "\n"
   "double: 1.111110e+00\n"
   "float:  2.22e+00\n"
-  "ulong:  4294967295\n"
+  "uint:   4294967295\n"
   "string: a string\n"
   "char*:  ..a nonconst pointer\n"
   "char[]: a c-style array\n"
