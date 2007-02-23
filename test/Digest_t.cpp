@@ -6,8 +6,7 @@ using namespace std;
 using cms::Digest;
 using cms::MD5Result;
 
-void testGivenString(std::string const& s)
-{
+void testGivenString(std::string const& s) {
   Digest dig1(s);
   MD5Result r1 = dig1.digest();
 
@@ -22,8 +21,7 @@ void testGivenString(std::string const& s)
   assert(r1.compactForm().size() == 16);
 }
 
-void testConversions()
-{
+void testConversions() {
   string data("aldjfakl\tsdjf34234 \najdf");
   Digest dig(data);
   MD5Result r1 = dig.digest();
@@ -37,9 +35,7 @@ void testConversions()
   assert(r1.compactForm() == r2.compactForm());
 }
 
-
-void testEmptyString()
-{
+void testEmptyString() {
   std::string e;
   testGivenString(e);
 
@@ -49,12 +45,10 @@ void testEmptyString()
   MD5Result r2;
   assert(r1 == r2);
 
-  assert(! r1.isValid());
+  assert(!r1.isValid());
 }
 
-
-int main()
-{
+int main() {
   Digest dig1;
   dig1.append("hello");
   Digest dig2("hello");
@@ -63,8 +57,8 @@ int main()
   MD5Result r2 = dig2.digest();
 
   assert(r1 == r2);
-  assert(! (r1 < r2));
-  assert(! (r2 < r1));
+  assert(!(r1 < r2));
+  assert(!(r2 < r1));
 
   assert(r1.toString().size() == 32);
 
@@ -73,5 +67,4 @@ int main()
   testGivenString("abc 123 abc");
   testEmptyString();
   testConversions();
-  
 }
