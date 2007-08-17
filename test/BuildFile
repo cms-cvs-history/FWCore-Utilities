@@ -14,6 +14,7 @@
 </environment>
 
 <use name=cppunit>
+<bin file=HRTime_t.cpp></bin>
 
 <bin name=testFWCoreUtilities 
   file=typeidbase_t.cppunit.cpp,typeid_t.cppunit.cpp,friendlyname_t.cppunit.cpp,cputimer_t.cppunit.cpp,extensioncord_t.cppunit.cpp>
