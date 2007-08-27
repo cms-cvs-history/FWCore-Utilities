@@ -13,8 +13,15 @@
   <bin file=Digest_t.cpp></bin>
 </environment>
 
-<use name=cppunit>
-<bin file=HRTime_t.cpp></bin>
+
+<bin file=HRTime_t.cpp>
+  <use name=cppunit>
+</bin>
+
+<bin file=Math_t.cpp>
+  <use name=cppunit>
+</bin>
+
 
 <bin name=testFWCoreUtilities 
   file=typeidbase_t.cppunit.cpp,typeid_t.cppunit.cpp,cputimer_t.cppunit.cpp,extensioncord_t.cppunit.cpp,friendlyname_t.cppunit.cpp>
