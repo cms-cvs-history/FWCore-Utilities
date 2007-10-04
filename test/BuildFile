@@ -7,7 +7,7 @@
   <bin file=CodedException_t.cpp></bin>
   <bin file=EDMException_t.cpp></bin>
   <bin file=TestHelper_t.cpp> 
-     <flags TEST_RUNNER_ARGS=" /bin/bash FWCore/Utilities/test one.sh two.sh">
+     <flags TEST_RUNNER_ARGS=" /bin/bash FWCore/Utilities/test one.sh two.sh testFriendlyNames.sh">
   </bin>
   <bin file=value_ptr_t.cpp></bin>
   <bin file=Digest_t.cpp></bin>
