@@ -8,8 +8,6 @@
 #include <assert.h>
 
 //using namespace cms;
-using namespace std;
-
 namespace edmtest
 {
 
@@ -37,7 +35,7 @@ namespace {
   {
     FilledMap() : trans_()
     {
-      cerr << "my loadmap got called" << endl;
+      std::cerr << "my loadmap got called" << std::endl;
       EDM_MAP_ENTRY(trans_,edmtest,Bad);
       EDM_MAP_ENTRY(trans_,edmtest,Worse);
       EDM_MAP_ENTRY(trans_,edmtest,Horrific);
@@ -63,7 +61,7 @@ struct Thing
   int x;
 };
 
-ostream& operator<<(ostream& os, const Thing& t)
+std::ostream& operator<<(std::ostream& os, const Thing& t)
 {
   os << "Thing(" << t.x << ")";
   return os;
@@ -93,15 +91,15 @@ void func3()
     << "char*:  " << c1 << "\n"
     << "char[]: " << c2 << "\n"
     << "Thing:  " << thing << "\n"
-    << endl
-    << "double: " << scientific << d << "\n"
-    << "float:  " << setprecision(2) << f << "\n"
+    << std::endl
+    << "double: " << std::scientific << d << "\n"
+    << "float:  " << std::setprecision(2) << f << "\n"
     << "uint:   " << i << "\n"
     << "string: " << s << "\n"
-    << "char*:  " << setfill('.') << setw(20) << c1 << "\n"
+    << "char*:  " << std::setfill('.') << std::setw(20) << c1 << "\n"
     << "char[]: " << c2 << "\n"
     << "Thing:  " << thing
-    << endl;
+    << std::endl;
 }
 
 void func2()
@@ -166,16 +164,16 @@ int main()
     func1();
   }
   catch (cms::Exception& e) {
-    cerr << "*** main caught Exception, output is ***\n"
+    std::cerr << "*** main caught Exception, output is ***\n"
 	 << "(" << e.explainSelf() << ")"
 	 << "*** After exception output ***"
-	 << endl;
+	 << std::endl;
 
-    cerr << "\nCategory name list:\n";
+    std::cerr << "\nCategory name list:\n";
 
     if(e.explainSelf() != answer) {
-      cerr << "not right answer\n(" << answer << ")\n"
-	   << endl;
+      std::cerr << "not right answer\n(" << answer << ")\n"
+	   << std::endl;
       abort();
     }
 
@@ -185,9 +183,9 @@ int main()
     if(e.history().size() !=2) abort();
 
     for(int j=0; i != b; ++i, ++j) {
-      cout << "  " << *i << "\n";
+      std::cout << "  " << *i << "\n";
       if(*i != correct[j])
-	{ cerr << "bad category " << *i << endl; abort(); }
+	{ std::cerr << "bad category " << *i << std::endl; abort(); }
     }
   }
   return 0;

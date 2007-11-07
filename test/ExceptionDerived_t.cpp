@@ -6,14 +6,13 @@
 #include <iomanip>
 
 using namespace cms;
-using namespace std;
 
 struct Thing : public Exception
 {
   Thing(const std::string& msg):Exception("Thing",msg) { }
 };
 
-ostream& operator<<(ostream& os, const Thing& t)
+std::ostream& operator<<(std::ostream& os, const Thing& t)
 {
   os << "Thing(" << t.explainSelf() << ")";
   return os;
@@ -21,7 +20,7 @@ ostream& operator<<(ostream& os, const Thing& t)
 
 void func3()
 {
-  throw Thing("Data Corrupt") << " Low level error" << endl;
+  throw Thing("Data Corrupt") << " Low level error" << std::endl;
 }
 
 void func2()
@@ -46,17 +45,17 @@ int main()
     func1();
   }
   catch (Exception& e) {
-    cerr << "*** main caught Exception, output is ***\n"
+    std::cerr << "*** main caught Exception, output is ***\n"
 	 << "(" << e.explainSelf() << ")"
 	 << "*** After exception output ***"
-	 << endl;
+	 << std::endl;
 
-    cerr << "\nCategory name list:\n";
+    std::cerr << "\nCategory name list:\n";
 
 #if 0
     if(e.explainSelf() != answer) {
-      cerr << "not right answer\n(" << answer << ")\n"
-	   << endl;
+      std::cerr << "not right answer\n(" << answer << ")\n"
+	   << std::endl;
       abort();
     }
 #endif
