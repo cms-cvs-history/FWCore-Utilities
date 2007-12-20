@@ -11,6 +11,7 @@
   </bin>
   <bin file=value_ptr_t.cpp></bin>
   <bin file=Digest_t.cpp></bin>
+  <bin file=MallocOpts_t.cpp></bin>
 </environment>
 
 
@@ -19,6 +20,10 @@
 </bin>
 
 <bin file=Math_t.cpp>
+  <use name=cppunit>
+</bin>
+
+<bin file=MallocOpts_t.cpp>
   <use name=cppunit>
 </bin>
 
