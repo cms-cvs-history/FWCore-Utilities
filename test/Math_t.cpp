@@ -4,6 +4,7 @@
 #include "FWCore/Utilities/interface/math.h"
 #include "FWCore/Utilities/interface/HRRealTime.h"
 
+#include <Utilities/Testing/interface/CppUnit_testdriver.icpp>
 #include <cppunit/extensions/HelperMacros.h>
 
 
