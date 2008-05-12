@@ -11,6 +11,7 @@
   </bin>
   <bin file=value_ptr_t.cpp></bin>
   <bin file=Digest_t.cpp></bin>
+  <bin file=CRC32Calculator_t.cpp></bin>
   <bin file=MallocOpts_t.cpp></bin>
 </environment>
 
