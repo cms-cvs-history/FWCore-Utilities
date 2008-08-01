@@ -1,5 +1,3 @@
-<use name=FWCore/Utilities>
-
 <bin name=edmToFriendlyClassName file=edmToFriendlyClassName.cc>
  <use name=FWCore/Utilities>
 </bin>
