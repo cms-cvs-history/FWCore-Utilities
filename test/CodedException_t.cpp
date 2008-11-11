@@ -6,6 +6,7 @@
 #include <string>
 #include <iomanip>
 #include <assert.h>
+#include <limits>
 
 //using namespace cms;
 namespace edmtest
