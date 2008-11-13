@@ -58,6 +58,10 @@ namespace edm {
 
       bool insertMapped(value_type const& v);
 
+      /// put the value_type objects in the given collection
+      /// into the registry.
+      void insertCollection(collection_type const& c);
+
       /// Return true if there are no contained value_type objects.
       bool empty() const;
 
@@ -164,6 +168,14 @@ namespace edm {
 	  newly_added = true;
       }
       return newly_added;
+    }
+
+    template <typename KEY, typename T, typename E>
+    void 
+    ThreadSafeRegistry<KEY,T,E>::insertCollection(collection_type const& c) {
+      for (typename collection_type::const_iterator it = c.begin(), itEnd = c.end(); it != itEnd; ++it) {
+	insertMapped(it->second);
+      }
     }
 
     template <typename KEY, typename T, typename E>

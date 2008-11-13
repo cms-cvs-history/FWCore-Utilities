@@ -40,8 +40,11 @@ namespace edm {
 
       /// put the given value_type object into the
       /// registry.
-
       bool insertMapped(value_type const& v);
+
+      /// put the value_type objects in the given collection
+      /// into the registry.
+      void insertCollection(collection_type const& c);
 
       /// Return true if there are no contained value_type objects.
       bool empty() const;
@@ -134,6 +137,14 @@ namespace edm {
       boost::mutex::scoped_lock lock(registry_mutex);
       data_.push_back(v);
       return true;
+    }
+
+    template <typename T, typename E>
+    void 
+    ThreadSafeIndexedRegistry<T, E>::insertCollection(collection_type const& c) {
+      for (typename collection_type::const_iterator it = c.begin(), itEnd = c.end(); it != itEnd; ++it) {
+	insertMapped(*it);
+      }
     }
 
     template <typename T, typename E>
