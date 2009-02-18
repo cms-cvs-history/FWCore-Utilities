@@ -57,7 +57,9 @@ template <class FP>
 void
 time_fp_type()
 {
-  volatile FP values[] = { 1.0, 1.0/0.0, -2.5, 1.0/3.0, 0.0/0.0 };
+  volatile float const zero = 0.0; // Use a variable to avoid compiler warning on divide by zero.
+  volatile FP values[] = { 1.0, 1.0/zero, -2.5, 1.0/3.0, 0.0/zero };
+
   unsigned long sum = 0;
   
   edm::HRTimeType start = edm::hrRealTime();
