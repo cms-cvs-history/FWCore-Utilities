@@ -14,7 +14,6 @@
   <bin file=CRC32Calculator_t.cpp></bin>
   <bin file=MallocOpts_t.cpp></bin>
   <bin file=Guid_t.cpp></bin>
-  <bin file=likely_t.cpp></bin>
 </environment>
 
 
