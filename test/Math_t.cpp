@@ -57,8 +57,8 @@ template <class FP>
 void
 time_fp_type()
 {
-  volatile float const zero = 0.0; // Use a variable to avoid compiler warning on divide by zero.
-  volatile FP values[] = { 1.0, 1.0/zero, -2.5, 1.0/3.0, 0.0/zero };
+  volatile float const zero = 0.0f; // Use a variable to avoid compiler warning on divide by zero.
+  volatile FP values[] = { 1.0f, 1.0f/zero, -2.5f, 1.0f/3.0f, 0.0f/zero };
 
   unsigned long sum = 0;
   
