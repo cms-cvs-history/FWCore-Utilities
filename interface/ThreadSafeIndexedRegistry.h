@@ -15,7 +15,6 @@
 ///
 // ----------------------------------------------------------------------
 
-#pragma GCC visibility push(default)
 namespace edm {
   namespace detail {
     struct Empty { };
@@ -232,6 +231,5 @@ namespace edm {
 
   } // namespace detail
 } // namespace edm
-#pragma GCC visibility pop
 
 #endif //  FWCore_Utilities_ThreadSafeIndexedRegistry_h
