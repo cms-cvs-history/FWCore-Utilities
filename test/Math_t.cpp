@@ -75,7 +75,6 @@ time_fp_type()
     for (int j = 0; j < 5; ++j)
       sum += (edm::detail::isnan(values[j]) ? 0 : 1);
   stop = edm::hrRealTime();
-  stop = edm::hrRealTime();
   std::cout << "edm::detail::isnan time: " << (stop - start) << std::endl;
 
   sum = 0;
